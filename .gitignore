@@ -58,3 +58,6 @@ build-iPhoneSimulator/
 
 *.sqlite3
 *.DS_Store
+
+yarn.lock
+node_modules/
