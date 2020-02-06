@@ -2,11 +2,7 @@ class PagesController < ApplicationController
   def home
     @items = Resource.seeds
   end
-
-  def temp
-    @items = Resource.seeds
-  end
-
+  
   def search
     @items = Resource.search(params[:q])
 
