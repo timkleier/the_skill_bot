@@ -25,4 +25,4 @@ end
 
 # require 'rake'
 # TheSkillBot::Application.load_tasks
-# Rake::Task['get_content:pluralsight'].execute({terms: ['CSS']})
+# Rake::Task['retrieve:pluralsight'].execute({terms: ['CSS']})

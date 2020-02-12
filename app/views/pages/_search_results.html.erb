@@ -7,7 +7,7 @@
         <%= image_tag 'pluralsight.png' %>
       </div>
       <div class="content">
-        <a class="header"><%= item[:title] %></a>
+        <%= link_to item[:title], item[:link], class: 'header', target: '_blank' %>
         <div class="meta">
           <span><%= item[:description] %></span>
         </div>
