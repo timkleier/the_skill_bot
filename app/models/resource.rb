@@ -2,7 +2,7 @@ class Resource < ApplicationRecord
 
   def self.search(q)
     if q
-      self.seeds.select{|resource| resource[:title].downcase.include?(q) || resource[:description].downcase.include?(q)}
+      self.where(matches_query(q))
     else
       self.seeds
     end
@@ -31,5 +31,24 @@ class Resource < ApplicationRecord
         link: 'https://app.pluralsight.com/library/courses/javascript-from-fundamentals-to-functional-js'
       }
     ]
+  end
+
+  private
+
+  # search functions
+  def self.matches_query(q)
+    matches_title(q).or(matches_description(q))
+  end
+
+  def self.matches_title(q)
+    table[:title].matches("%#{q}%")
+  end
+
+  def self.matches_description(q)
+    table[:description].matches("%#{q}%")
+  end
+
+  def self.table
+    self.arel_table
   end
 end
