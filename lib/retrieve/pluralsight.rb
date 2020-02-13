@@ -7,7 +7,7 @@ module Retrieve
 
       args[:terms].each do |term|
         # TODO!!!! Put into environment variable
-        client = GoogleSearchResults.new(q: "Pluralsight #{term}", serp_api_key: "871e3c2d06e7317313a71776a84aa8cf49e063c721db84499a4b3c608143d74d" )
+        client = GoogleSearchResults.new(q: "Pluralsight #{term}", serp_api_key: ENV['SERP_API_KEY'] )
         results = client.get_hash
 
         results[:organic_results].each do |item|
