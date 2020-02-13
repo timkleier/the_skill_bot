@@ -15,4 +15,5 @@
 //= require jquery3
 //= require turbolinks
 //= require semantic-ui
+//= require ahoy
 //= require_tree .
