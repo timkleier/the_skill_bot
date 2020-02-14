@@ -7,17 +7,22 @@ module Retrieve
 
       args[:terms].each do |term|
         # TODO!!!! Put into environment variable
-        client = GoogleSearchResults.new(q: "Pluralsight #{term}", serp_api_key: ENV['SERP_API_KEY'] )
+        client = GoogleSearchResults.new(q: "Pluralsight #{term}", serp_api_key: Rails.application.credentials.dig(:serp_api_key) )
         results = client.get_hash
 
+        records_to_upsert = []
         results[:organic_results].each do |item|
-          puts "Inserting #{item[:title]}"
-          resource = Resource.new
-          resource.title = item[:title]
-          resource.description = item[:snippet]
-          resource.link = item[:link]
-          resource.save
+          resource = {}
+          resource[:platform] = 'pluralsight'
+          resource[:title] = item[:title].split('|')[0].strip
+          resource[:description] = item[:snippet]
+          resource[:link] = item[:link]
+          resource[:created_at] = Date.today
+          resource[:updated_at] = Date.today
+          records_to_upsert << resource
         end
+
+        Resource.upsert_all(records_to_upsert, unique_by: :index_resources_on_title_and_platform)
       end
     end
   end
