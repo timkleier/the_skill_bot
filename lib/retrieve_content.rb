@@ -17,7 +17,7 @@ module RetrieveContent
     records_to_upsert = []
     serp_results[:organic_results].each do |item|
       next unless item[:link].match("#{platform}.#{tld}")
-      next if (!item[:link].match("courses") && platform == 'pluralsight'
+      next if (!item[:link].match("courses") && platform == 'pluralsight')
       resource = {}
       resource[:platform] = platform.downcase
       resource[:title] = item[:title]

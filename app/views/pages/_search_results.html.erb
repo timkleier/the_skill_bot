@@ -4,7 +4,7 @@
   <% @items.each do |item| %>
     <div class="item">
       <div class="image">
-        <%= image_tag 'pluralsight.png' %>
+        <%= image_tag "#{item.platform}.png", class: 'search_thumbnail' %>
       </div>
       <div class="content">
         <%= link_to item[:title], item[:link], class: 'header', target: '_blank' %>
