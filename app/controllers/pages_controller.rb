@@ -2,12 +2,12 @@ class PagesController < ApplicationController
   before_action :track_ahoy
 
   def home
-    @items = Resource.search(params[:q])
+    @items = search_resources
     @items_count = Resource.count
   end
 
   def search
-    @items = Resource.search(params[:q])
+    @items = search_resources
 
     respond_to do |format|
       format.js
@@ -15,6 +15,10 @@ class PagesController < ApplicationController
   end
 
   private
+
+  def search_resources
+    Resource.search(params[:q], params[:p])
+  end
 
   def track_ahoy
     ahoy.track params[:action], q: params[:q] ? params[:q] : nil

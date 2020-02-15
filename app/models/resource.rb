@@ -1,8 +1,12 @@
 class Resource < ApplicationRecord
 
-  def self.search(q)
-    if q
+  def self.search(q, p)
+    if q and p
+      self.where(matches_query(q)).where(platform: p)
+    elsif q
       self.where(matches_query(q))
+    elsif p
+      self.where(platform: p)
     else
       self.seeds
     end
