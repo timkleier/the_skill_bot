@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @items = Resource.search(params[:q])
+    @items_count = Resource.count
   end
 
   def search

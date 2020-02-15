@@ -1,9 +1,7 @@
-require 'retrieve/pluralsight'
+require 'retrieve_content'
 
 desc "SKOT fetches content"
 
-namespace :retrieve do
-  task pluralsight: :environment do |task, args|
-    Retrieve::Pluralsight.get_content(args)
-  end
+task retrieve_content: :environment do |task, args|
+  RetrieveContent.get(args)
 end

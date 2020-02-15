@@ -7,16 +7,21 @@
 <p id="skill_bot_header">
   THE SKILL BOT
 </p>
-<p id="skill_bot_description">
-  * Learning Hub<br/>
-  * 1,000+ Courses<br/>
-  * Updated Daily<br/>
+<p id="skill_bot_description" style="width: 300px;">
+  Searchable catalog of courses from modern learning platforms.<br/>
+  <span style="font-size: 12px; font-style: italic">I just launched, come back soon for more courses</span>
 </p>
+<!--
+<p id="skill_bot_description">
+  * Catalog of Courses<br/>
+  * <% @items_count %> Courses<br/>
+  * 5 Learning Platforms<br/>
+</p> -->
 
 <div class="ui top attached segment">
   <div class="ui fluid search">
     <div class="ui icon input">
-      <input id="search" class="prompt" type="text" placeholder="Search Pluralsight...">
+      <input id="search" class="prompt" type="text" value="<%= params[:q] %>" placeholder="Search Pluralsight...">
       <i class="search icon"></i>
     </div>
   </div>
