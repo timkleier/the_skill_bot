@@ -1,6 +1,6 @@
 desc "Send Tweet"
 
-task send_tweet: :environment do
+task send_todays_tweet: :environment do
   client = Twitter::REST::Client.new do |config|
     config.consumer_key        = Rails.application.credentials.dig(:twitter_consumer_key)
     config.consumer_secret     = Rails.application.credentials.dig(:twitter_consumer_secret)
