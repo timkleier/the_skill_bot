@@ -48,4 +48,4 @@ module RetrieveContent
 end
 
 # require 'rake'; TheSkillBot::Application.load_tasks
-# Rake::Task['retrieve_content'].execute({platforms: ['pluralsight'], terms: ['JavaScript']})
+# Rake::Task['retrieve_content'].execute({platforms: ['pluralsight', 'coursera', 'udemy'], terms: ['HTML', 'CSS', 'JavaScript', 'Full Stack Web Development', 'Web Development', 'Python', 'Machine Learning', 'Ruby', 'Ruby on Rails', 'React']})

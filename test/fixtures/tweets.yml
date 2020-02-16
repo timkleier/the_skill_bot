@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  platform: MyString
+  term: MyString
+  sent: false
+  sent_timestamp: 2020-02-16 08:52:47
+
+two:
+  platform: MyString
+  term: MyString
+  sent: false
+  sent_timestamp: 2020-02-16 08:52:47
