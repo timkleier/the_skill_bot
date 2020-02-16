@@ -9,10 +9,13 @@ task send_todays_tweet: :environment do
   end
 
   tweet = Tweet.get_todays_tweet
-  constructed_tweet = tweet.construct_tweet
 
-  unless tweet.sent
+  if tweet and !tweet.sent
+    constructed_tweet = tweet.construct_tweet
+    puts "sending tweet for #{Date.today}"
     client.update(constructed_tweet)
     tweet.update({ sent: true, sent_timestamp: Time.now })
+  else
+    puts "tweet not sent for #{Date.today}"
   end
 end
