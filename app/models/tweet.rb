@@ -10,19 +10,22 @@ class Tweet < ApplicationRecord
     send "tweet_base_#{num}"
   end
 
-  def self.get_todays_tweet
-    find_by(date_to_send: Date.today)
+  def self.get_next_tweet
+    where(sent: [nil, false]).first
   end
 
   def self.schedule_tweets
-    platforms = ['Pluralsight', 'Coursera', 'Udemy']
-    terms = ['HTML', 'CSS', 'JavaScript', 'Full Stack Web Development', 'Web Development', 'Python', 'Machine Learning', 'Ruby', 'Ruby on Rails', 'React']
+    platforms = ['Pluralsight', 'Coursera', 'Udemy', 'Udacity', 'edX']
+    terms = [
+      'Leadership', 'Management', 'Business Strategy', 'Entrepreneurship', 'Finance', 'Marketing',
+      'Algorithms', 'Data Science', 'Computer Science', 'Information Technology', 'Software Development', 'Mobile Development', 'Design and Product', 'Cloud Computing', 'Application Security', 'Data Management', 'Computer Networking', 'Support and Operations', 'Graphic Design', 'Probability and Statistics',
+      'Personal Development', 'Productivity', 'Habits', 'Soft Skills', 'Communication', 'Health & Nutrition',
+      'Algebra', 'Calculus', 'Cryptography', 'Game Theory', 'Knowledge Graphs'
+    ]
 
-    num_days = 1
-    platforms.each do |platform|
-      terms.each do |term|
-        Tweet.create(platform: platform, term: term, date_to_send: Date.today + num_days.days)
-        num_days += 1
+    terms.each do |term|
+      platforms.each do |platform|
+        Tweet.create(platform: platform, term: term)
       end
     end
   end
