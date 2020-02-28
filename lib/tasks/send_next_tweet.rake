@@ -12,10 +12,10 @@ task send_next_tweet: :environment do
 
   if tweet and !tweet.sent
     constructed_tweet = tweet.construct_tweet
-    puts "sending tweet: #{platform} | #{term}"
+    puts "sending tweet: #{tweet.platform} | #{tweet.term}"
     client.update(constructed_tweet)
     tweet.update({ sent: true, sent_timestamp: Time.now })
   else
-    puts "tweet not sent for #{platform} | #{term}"
+    puts "tweet not sent for #{tweet.platform} | #{tweet.term}"
   end
 end

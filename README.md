@@ -16,5 +16,5 @@ Rake::Task['retrieve_content'].execute({platforms: ['coursera', 'udemy', 'udacit
   'Algebra', 'Calculus', 'Cryptography', 'Game Theory', 'Knowledge Graphs']})
 
 # schedule tweets, ensure data is correct
-Resource.schedule_tweets
+Tweet.schedule_tweets
 ```
